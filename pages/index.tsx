@@ -1,9 +1,5 @@
-import { Button, Group } from "@mantine/core";
+import { AppLayout } from "../components/AppLayout";
 
 export default function IndexPage() {
-  return (
-    <Group mt={50} position="center">
-      <Button size="xl">Welcome to Mantine!</Button>
-    </Group>
-  );
+  return <AppLayout>Home</AppLayout>;
 }
