@@ -4,6 +4,7 @@ import { useStyles } from './styles'
 import { sideBarItems } from '../../componentsUtils/SideBarElementData'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { UserButton } from '../UserButton'
 
 const SideBar: React.FC<{}> = () => {
   const { classes, cx } = useStyles()
@@ -27,7 +28,7 @@ const SideBar: React.FC<{}> = () => {
     <Navbar height={'100vh'} p="md">
       <Navbar.Section grow component={ScrollArea}>
         <Group className={classes.header} position="apart">
-          <Code sx={{ fontWeight: 700 }}>v3.1.2</Code>
+          <UserButton name="Ann Nullpointer" email="anullpointer@yahoo.com" />
         </Group>
         {links}
       </Navbar.Section>
