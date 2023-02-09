@@ -1,14 +1,13 @@
-import { useState } from "react";
-import { Navbar, Group, Code } from "@mantine/core";
-import { IconLogout } from "@tabler/icons";
-import { useStyles } from "./styles";
-import { sideBarItems } from "../../componentsUtils/SideBarElementData";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import { Navbar, Group, Code, ScrollArea } from '@mantine/core'
+import { IconLogout } from '@tabler/icons'
+import { useStyles } from './styles'
+import { sideBarItems } from '../../componentsUtils/SideBarElementData'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const SideBar: React.FC<{}> = () => {
-  const { classes, cx } = useStyles();
-  const router = useRouter();
+  const { classes, cx } = useStyles()
+  const router = useRouter()
 
   const links = sideBarItems.map((item) => (
     <Link href={item.link}>
@@ -22,11 +21,11 @@ const SideBar: React.FC<{}> = () => {
         <span>{item.label}</span>
       </a>
     </Link>
-  ));
+  ))
 
   return (
-    <Navbar height={"100vh"} p="md">
-      <Navbar.Section grow>
+    <Navbar height={'100vh'} p="md">
+      <Navbar.Section grow component={ScrollArea}>
         <Group className={classes.header} position="apart">
           <Code sx={{ fontWeight: 700 }}>v3.1.2</Code>
         </Group>
@@ -44,7 +43,7 @@ const SideBar: React.FC<{}> = () => {
         </a>
       </Navbar.Section>
     </Navbar>
-  );
-};
+  )
+}
 
-export { SideBar };
+export { SideBar }

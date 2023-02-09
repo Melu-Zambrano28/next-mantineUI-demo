@@ -1,5 +1,5 @@
-import { Grid } from "@mantine/core";
-import { SideBar } from "../SideBar";
+import { Grid } from '@mantine/core'
+import { SideBar } from '../SideBar'
 
 const AppLayout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   return (
@@ -9,7 +9,7 @@ const AppLayout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
       </Grid.Col>
       <Grid.Col md={10}>{children}</Grid.Col>
     </Grid>
-  );
-};
+  )
+}
 
-export { AppLayout };
+export { AppLayout }

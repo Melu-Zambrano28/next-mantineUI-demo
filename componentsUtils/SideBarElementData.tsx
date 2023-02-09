@@ -3,11 +3,11 @@ import {
   IconCalendarEvent,
   IconFolder,
   IconLayoutDashboard,
-} from "@tabler/icons";
+} from '@tabler/icons'
 
 export const sideBarItems = [
-  { link: "/dashboard", label: "Dashboard", icon: IconLayoutDashboard },
-  { link: "/prodotti", label: "Prodotti", icon: IconBusinessplan },
-  { link: "/documentazione", label: "Documentazione", icon: IconFolder },
-  { link: "/agenda", label: "Agenda", icon: IconCalendarEvent },
-];
+  { link: '/', label: 'Dashboard', icon: IconLayoutDashboard },
+  { link: '/prodotti', label: 'Prodotti', icon: IconBusinessplan },
+  { link: '/documentazione', label: 'Documentazione', icon: IconFolder },
+  { link: '/agenda', label: 'Agenda', icon: IconCalendarEvent },
+]
