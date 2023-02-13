@@ -11,7 +11,7 @@ const SideBar: React.FC<{}> = () => {
   const router = useRouter()
 
   const links = sideBarItems.map((item) => (
-    <Link href={item.link}>
+    <Link href={item.link} key={`sideBarLink${item.label}`}>
       <a
         className={cx(classes.link, {
           [classes.linkActive]: router.pathname === item.link,
@@ -26,7 +26,7 @@ const SideBar: React.FC<{}> = () => {
 
   return (
     <Navbar width={{ base: 300 }} height={'100vh'} p="md">
-      <Navbar.Section grow component={ScrollArea}>
+      <Navbar.Section grow>
         <Group className={classes.header}>
           <UserButton name="Ann Nullpointer" email="anullpointer@yahoo.com" />
         </Group>

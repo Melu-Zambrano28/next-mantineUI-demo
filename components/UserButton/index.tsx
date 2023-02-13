@@ -4,8 +4,10 @@ import {
   Group,
   Avatar,
   Text,
+  Box,
+  NavLink,
 } from '@mantine/core'
-import { IconChevronRight } from '@tabler/icons'
+import { IconChevronRight, IconSettings } from '@tabler/icons'
 import { useStyles } from './styles'
 
 interface UserButtonProps extends UnstyledButtonProps {
@@ -34,18 +36,11 @@ const UserButton: React.FC<UserButtonProps> = ({
         radius="xl"
         size="xl"
       >{`MZ`}</Avatar>
-      <UnstyledButton className={classes.user} {...others}>
-        <div>
-          <Text size="sm" weight={500}>
-            {name}
-          </Text>
-
-          <Text color="dimmed" size="xs">
-            {email}
-          </Text>
-        </div>
-        <div>{icon || <IconChevronRight size={14} stroke={1.5} />}</div>
-      </UnstyledButton>
+      <Box sx={{ width: 270 }}>
+        <NavLink label={name} description={email}>
+          <NavLink label={`Cambia Password`} icon={<IconSettings />} />
+        </NavLink>
+      </Box>
     </Group>
   )
 }
