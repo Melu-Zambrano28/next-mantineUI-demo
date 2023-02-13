@@ -1,14 +1,32 @@
-import { Grid } from '@mantine/core'
+import { AppShell, Footer, Grid, Header, Navbar } from '@mantine/core'
 import { SideBar } from '../SideBar'
 
 const AppLayout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   return (
-    <Grid>
-      <Grid.Col md={2}>
-        <SideBar />
-      </Grid.Col>
-      <Grid.Col md={10}>{children}</Grid.Col>
-    </Grid>
+    <AppShell
+      padding="md"
+      header={
+        <Header height={60} p="xs">
+          {/* Header content */}
+        </Header>
+      }
+      navbar={<SideBar />}
+      footer={
+        <Footer height={60} p="md">
+          Application footer
+        </Footer>
+      }
+      styles={(theme) => ({
+        main: {
+          backgroundColor:
+            theme.colorScheme === 'dark'
+              ? theme.colors.dark[8]
+              : theme.colors.gray[0],
+        },
+      })}
+    >
+      {children}
+    </AppShell>
   )
 }
 

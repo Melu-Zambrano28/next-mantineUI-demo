@@ -1,5 +1,5 @@
-import { Navbar, Group, Code, ScrollArea } from '@mantine/core'
-import { IconLogout } from '@tabler/icons'
+import { Navbar, Group, Code, ScrollArea, NavLink } from '@mantine/core'
+import { IconGauge, IconLogout } from '@tabler/icons'
 import { useStyles } from './styles'
 import { sideBarItems } from '../../componentsUtils/SideBarElementData'
 import Link from 'next/link'
@@ -25,9 +25,9 @@ const SideBar: React.FC<{}> = () => {
   ))
 
   return (
-    <Navbar height={'100vh'} p="md">
+    <Navbar width={{ base: 300 }} height={'100vh'} p="md">
       <Navbar.Section grow component={ScrollArea}>
-        <Group className={classes.header} position="apart">
+        <Group className={classes.header}>
           <UserButton name="Ann Nullpointer" email="anullpointer@yahoo.com" />
         </Group>
         {links}
