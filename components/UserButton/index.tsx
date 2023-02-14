@@ -8,6 +8,8 @@ import {
   NavLink,
 } from '@mantine/core'
 import { IconChevronRight, IconSettings } from '@tabler/icons'
+import { useRouter } from 'next/router'
+import { SideBarElement } from '../SideBar/SideBarElement'
 import { useStyles } from './styles'
 
 interface UserButtonProps extends UnstyledButtonProps {
@@ -38,7 +40,12 @@ const UserButton: React.FC<UserButtonProps> = ({
       >{`MZ`}</Avatar>
       <Box sx={{ width: 270 }}>
         <NavLink label={name} description={email}>
-          <NavLink label={`Cambia Password`} icon={<IconSettings />} />
+          <SideBarElement
+            keyElement={`NavLinkCambiaPw`}
+            link={'/'}
+            label={`Cambia Password`}
+            icon={<IconSettings />}
+          />
         </NavLink>
       </Box>
     </Group>
