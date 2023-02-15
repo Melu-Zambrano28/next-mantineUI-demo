@@ -7,7 +7,7 @@ type SideBarElementProp = {
   keyElement: string
   link: string
   label: string
-  icon?: React.ReactNode
+  Icon?: React.ElementType
   onclick?: MouseEventHandler<HTMLAnchorElement> | undefined
 }
 
@@ -15,7 +15,7 @@ const SideBarElement: React.FC<SideBarElementProp> = ({
   keyElement,
   link,
   label,
-  icon,
+  Icon,
   onclick,
 }) => {
   const { classes, cx } = useStyles()
@@ -30,7 +30,7 @@ const SideBarElement: React.FC<SideBarElementProp> = ({
         key={`sideBarElementa${keyElement}`}
         onClick={onclick}
       >
-        {icon}
+        {Icon && <Icon className={classes.linkIcon} />}
         <span>{label}</span>
       </a>
     </Link>

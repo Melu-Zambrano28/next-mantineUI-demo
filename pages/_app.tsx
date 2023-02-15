@@ -1,6 +1,7 @@
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { MantineProvider } from '@mantine/core'
+import { AppLayout } from '../components/AppLayout'
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props
@@ -20,11 +21,12 @@ export default function App(props: AppProps) {
         withGlobalStyles
         withNormalizeCSS
         theme={{
-          /** Put your mantine theme override here */
           colorScheme: 'light',
         }}
       >
-        <Component {...pageProps} />
+        <AppLayout>
+          <Component {...pageProps} />
+        </AppLayout>
       </MantineProvider>
     </>
   )

@@ -1,31 +1,20 @@
-import {
-  UnstyledButton,
-  UnstyledButtonProps,
-  Group,
-  Avatar,
-  Text,
-  Box,
-  NavLink,
-} from '@mantine/core'
-import { IconChevronRight, IconSettings } from '@tabler/icons'
-import { useRouter } from 'next/router'
+import { UnstyledButtonProps, Group, Avatar, Box, NavLink } from '@mantine/core'
+import { IconSettings } from '@tabler/icons'
 import { SideBarElement } from '../SideBar/SideBarElement'
 import { useStyles } from './styles'
 
-interface UserButtonProps extends UnstyledButtonProps {
+interface UseMenuProps extends UnstyledButtonProps {
   image?: string
   name: string
   email: string
-  icon?: React.ReactNode
 }
 
-const UserButton: React.FC<UserButtonProps> = ({
+const UserMenu: React.FC<UseMenuProps> = ({
   image,
   name,
   email,
-  icon,
   ...others
-}: UserButtonProps) => {
+}: UseMenuProps) => {
   const { classes } = useStyles()
 
   return (
@@ -44,7 +33,7 @@ const UserButton: React.FC<UserButtonProps> = ({
             keyElement={`NavLinkCambiaPw`}
             link={'/'}
             label={`Cambia Password`}
-            icon={<IconSettings />}
+            Icon={IconSettings}
           />
         </NavLink>
       </Box>
@@ -52,4 +41,4 @@ const UserButton: React.FC<UserButtonProps> = ({
   )
 }
 
-export { UserButton }
+export { UserMenu }

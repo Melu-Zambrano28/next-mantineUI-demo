@@ -1,4 +1,4 @@
-import { AppShell, Footer, Grid, Header, Navbar } from '@mantine/core'
+import { AppShell } from '@mantine/core'
 import { SideBar } from '../SideBar'
 
 const AppLayout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
