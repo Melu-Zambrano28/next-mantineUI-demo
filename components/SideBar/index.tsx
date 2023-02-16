@@ -1,26 +1,41 @@
-import { Navbar, Group } from '@mantine/core'
-import { IconLogout } from '@tabler/icons'
+import { Navbar, ScrollArea } from '@mantine/core'
 import { useStyles } from './styles'
-import { sideBarItems } from '../../componentsUtils/data/SideBarElementData'
-import { UserMenu } from '../UserMenu'
+import {
+  sideBarheaderItems,
+  sideBarItems,
+} from '../../componentsUtils/data/SideBarElementData'
+import { UserButton } from '../UserButton'
 import { SideBarElement } from './SideBarElement'
+import { LinksGroup } from './SideBarGroupElements'
 
-type SideBarProp = {}
+type SideBarProp = {
+  hidden: boolean
+}
 
-const SideBar: React.FC<SideBarProp> = () => {
+const SideBar: React.FC<SideBarProp> = ({ hidden }) => {
   const { classes } = useStyles()
 
   return (
-    <Navbar width={{ base: 300 }} height={'100vh'} p="md">
-      <Navbar.Section grow>
-        <Group className={classes.header}>
-          <UserMenu
-            UserInformation={{
-              name: 'Ann Nullpointer',
-              email: 'anullpointer@yahoo.com',
-            }}
-          />
-        </Group>
+    <Navbar
+      p="md"
+      hiddenBreakpoint="sm"
+      hidden={hidden}
+      width={{ sm: 200, lg: 300 }}
+    >
+      <Navbar.Section className={classes.header}>
+        <UserButton
+          UserInformation={{
+            name: 'Melissa Zambrano',
+            profile: 'Consulente',
+          }}
+        />
+
+        {sideBarheaderItems.map((item) => (
+          <LinksGroup {...item} key={item.label} />
+        ))}
+      </Navbar.Section>
+
+      <Navbar.Section grow component={ScrollArea}>
         {sideBarItems.map((item, index) => (
           <SideBarElement
             key={`SideBarElement${index}`}
@@ -30,17 +45,6 @@ const SideBar: React.FC<SideBarProp> = () => {
             label={`${item.label}`}
           />
         ))}
-      </Navbar.Section>
-
-      <Navbar.Section className={classes.footer}>
-        <SideBarElement
-          key={`SideBarFooterElement`}
-          keyElement={`footerElement`}
-          link={`/login`}
-          Icon={IconLogout}
-          onclick={(event) => event.preventDefault()}
-          label={`Logout`}
-        />
       </Navbar.Section>
     </Navbar>
   )

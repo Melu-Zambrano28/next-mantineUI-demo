@@ -3,7 +3,16 @@ import {
   IconCalendarEvent,
   IconFolder,
   IconLayoutDashboard,
+  IconSettings,
 } from '@tabler/icons'
+
+export const sideBarheaderItems = [
+  {
+    label: 'Profilo',
+    icon: IconSettings,
+    links: [{ label: 'cambia Password', link: '/cambia' }],
+  },
+]
 
 export const sideBarItems = [
   { link: '/', label: 'Dashboard', icon: IconLayoutDashboard },
