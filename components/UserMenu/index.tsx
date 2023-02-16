@@ -2,20 +2,24 @@ import { UnstyledButtonProps, Group, Avatar, Box, NavLink } from '@mantine/core'
 import { IconSettings } from '@tabler/icons'
 import { SideBarElement } from '../SideBar/SideBarElement'
 import { useStyles } from './styles'
+import { atomWithStorage } from 'jotai/utils'
+import { useAtom } from 'jotai'
 
 interface UseMenuProps extends UnstyledButtonProps {
-  image?: string
-  name: string
-  email: string
+  UserInformation: {
+    name: string
+    email: string
+    image?: string
+  }
 }
 
+const isOpenMenuAtom = atomWithStorage('isOpenMenuAtom', false)
+
 const UserMenu: React.FC<UseMenuProps> = ({
-  image,
-  name,
-  email,
-  ...others
+  UserInformation,
 }: UseMenuProps) => {
   const { classes } = useStyles()
+  const [openUserMenu, setOpenUserMenu] = useAtom(isOpenMenuAtom)
 
   return (
     <Group position="center">
@@ -23,12 +27,17 @@ const UserMenu: React.FC<UseMenuProps> = ({
         classNames={{
           placeholder: `${classes.avatarPlaceHolder}`,
         }}
-        src={image}
+        src={UserInformation.image}
         radius="xl"
         size="xl"
       >{`MZ`}</Avatar>
       <Box sx={{ width: 270 }}>
-        <NavLink label={name} description={email}>
+        <NavLink
+          label={UserInformation.name}
+          description={UserInformation.email}
+          onClick={() => setOpenUserMenu(!openUserMenu)}
+          opened={openUserMenu}
+        >
           <SideBarElement
             keyElement={`NavLinkCambiaPw`}
             link={'/'}

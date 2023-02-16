@@ -1,7 +1,12 @@
 import { NextPage } from 'next'
+import { AppLayout } from '../components/AppLayout'
 
 const DashboardPage: NextPage = () => {
-  return <div>ciao da dashboard</div>
+  return (
+    <AppLayout>
+      <div>ciao da dashboard</div>
+    </AppLayout>
+  )
 }
 
 export default DashboardPage

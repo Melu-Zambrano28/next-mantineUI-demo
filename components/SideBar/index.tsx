@@ -5,14 +5,21 @@ import { sideBarItems } from '../../componentsUtils/data/SideBarElementData'
 import { UserMenu } from '../UserMenu'
 import { SideBarElement } from './SideBarElement'
 
-const SideBar: React.FC<{}> = () => {
+type SideBarProp = {}
+
+const SideBar: React.FC<SideBarProp> = () => {
   const { classes } = useStyles()
 
   return (
     <Navbar width={{ base: 300 }} height={'100vh'} p="md">
       <Navbar.Section grow>
         <Group className={classes.header}>
-          <UserMenu name="Ann Nullpointer" email="anullpointer@yahoo.com" />
+          <UserMenu
+            UserInformation={{
+              name: 'Ann Nullpointer',
+              email: 'anullpointer@yahoo.com',
+            }}
+          />
         </Group>
         {sideBarItems.map((item, index) => (
           <SideBarElement

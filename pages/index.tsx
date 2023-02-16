@@ -1,3 +1,9 @@
+import { AppLayout } from '../components/AppLayout'
+
 export default function IndexPage() {
-  return <div>Home</div>
+  return (
+    <AppLayout>
+      <div>Home</div>
+    </AppLayout>
+  )
 }

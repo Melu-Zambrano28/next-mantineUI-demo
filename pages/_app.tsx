@@ -1,7 +1,7 @@
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { MantineProvider } from '@mantine/core'
-import { AppLayout } from '../components/AppLayout'
+import { Provider } from 'jotai'
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props
@@ -24,9 +24,9 @@ export default function App(props: AppProps) {
           colorScheme: 'light',
         }}
       >
-        <AppLayout>
+        <Provider>
           <Component {...pageProps} />
-        </AppLayout>
+        </Provider>
       </MantineProvider>
     </>
   )
