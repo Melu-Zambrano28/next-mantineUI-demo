@@ -10,7 +10,7 @@ export const sideBarheaderItems = [
   {
     label: 'Profilo',
     icon: IconSettings,
-    links: [{ label: 'cambia Password', link: '/cambia' }],
+    links: [{ label: 'Cambia Password', link: '/' }],
   },
 ]
 

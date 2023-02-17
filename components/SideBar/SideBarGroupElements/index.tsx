@@ -11,6 +11,7 @@ import { useStyles } from './styles'
 import { atomWithStorage } from 'jotai/utils'
 import { useAtom } from 'jotai'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 type LinksGroupProps = {
   icon: TablerIcon
@@ -29,9 +30,16 @@ const LinksGroup: React.FC<LinksGroupProps> = ({
   const hasLinks = Array.isArray(links)
   const [opened, setOpened] = useAtom(openedLinksGroups)
   const ChevronIcon = theme.dir === 'ltr' ? IconChevronRight : IconChevronLeft
+  const router = useRouter()
+
   const items = (hasLinks ? links : []).map((link) => (
     <Link href={link.link} key={`LinksGroup${link.label}`}>
-      <a className={classes.link} key={`LinksGroupPropsElemnta${link.label}`}>
+      <a
+        className={cx(classes.link, {
+          [classes.linkActive]: router.pathname === link.link,
+        })}
+        key={`LinksGroupPropsElemntA${link.label}`}
+      >
         {link.label}
       </a>
     </Link>
@@ -41,14 +49,18 @@ const LinksGroup: React.FC<LinksGroupProps> = ({
     <>
       <UnstyledButton
         onClick={() => setOpened((o) => !o)}
-        className={classes.control}
+        className={cx(classes.control, {
+          [classes.controlActive]: opened,
+        })}
       >
         <Group position="apart" spacing={0}>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <ThemeIcon variant="light" size={30}>
-              <Icon size={18} />
-            </ThemeIcon>
-            <Box ml="md">{label}</Box>
+            <Icon
+              className={cx(classes.linkIcon, {
+                [classes.linkActive]: opened,
+              })}
+            />
+            <Box>{label}</Box>
           </Box>
           {hasLinks && (
             <ChevronIcon
