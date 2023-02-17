@@ -5,8 +5,8 @@ import {
   sideBarItems,
 } from '../../componentsUtils/data/SideBarElementData'
 import { UserButton } from '../UserButton'
-import { SideBarElement } from './SideBarElement'
-import { LinksGroup } from './SideBarGroupElements'
+import { SideBarElement } from '../SideBarElement'
+import { LinksGroup } from '../SideBarGroupElements'
 
 type SideBarProp = {
   hidden: boolean

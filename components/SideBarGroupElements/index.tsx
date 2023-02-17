@@ -1,11 +1,4 @@
-import {
-  Group,
-  Box,
-  Collapse,
-  ThemeIcon,
-  Text,
-  UnstyledButton,
-} from '@mantine/core'
+import { Group, Box, Collapse, UnstyledButton } from '@mantine/core'
 import { TablerIcon, IconChevronLeft, IconChevronRight } from '@tabler/icons'
 import { useStyles } from './styles'
 import { atomWithStorage } from 'jotai/utils'
@@ -19,7 +12,10 @@ type LinksGroupProps = {
   links?: { label: string; link: string }[]
 }
 
-const openedLinksGroups = atomWithStorage('openedLinksGroup', false)
+const LinksGroupParentAccordionAtom = atomWithStorage(
+  'LinksGroupParentAccordionAtom',
+  false,
+)
 
 const LinksGroup: React.FC<LinksGroupProps> = ({
   icon: Icon,
@@ -28,7 +24,7 @@ const LinksGroup: React.FC<LinksGroupProps> = ({
 }: LinksGroupProps) => {
   const { classes, cx, theme } = useStyles()
   const hasLinks = Array.isArray(links)
-  const [opened, setOpened] = useAtom(openedLinksGroups)
+  const [opened, setOpened] = useAtom(LinksGroupParentAccordionAtom)
   const ChevronIcon = theme.dir === 'ltr' ? IconChevronRight : IconChevronLeft
   const router = useRouter()
 

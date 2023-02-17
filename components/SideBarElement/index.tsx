@@ -1,7 +1,7 @@
 import { useRouter } from 'next/dist/client/router'
 import Link from 'next/link'
 import { MouseEventHandler } from 'react'
-import { useStyles } from '../styles'
+import { useStyles } from '../SideBar/styles'
 
 type SideBarElementProp = {
   keyElement: string
