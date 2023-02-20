@@ -2,8 +2,8 @@ import { ActionIcon, ColorScheme } from '@mantine/core'
 import { IconMoonStars, IconSun } from '@tabler/icons'
 
 type SwitchModeProp = {
-  colorScheme: ColorScheme
-  onClick: () => void
+  colorScheme?: ColorScheme
+  onClick?: () => void
 }
 
 const SwitchMode: React.FC<SwitchModeProp> = ({ colorScheme, onClick }) => {

@@ -9,7 +9,7 @@ export const useStyles = createStyles((theme) => ({
     alignItems: 'start',
     padding: theme.spacing.md,
     color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.black,
-
+    userSelect: 'none',
     '&:hover': {
       backgroundColor:
         theme.colorScheme === 'dark'
