@@ -1,13 +1,6 @@
-import {
-  AppShell,
-  Burger,
-  Footer,
-  Grid,
-  Header,
-  MediaQuery,
-  useMantineTheme,
-} from '@mantine/core'
+import { AppShell, Footer, Grid, useMantineTheme } from '@mantine/core'
 import { useState } from 'react'
+import { AppHeader } from '../AppHeader'
 import { SideBar } from '../SideBar'
 
 const AppLayout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
@@ -32,23 +25,7 @@ const AppLayout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
         </Footer>
       }
       header={
-        <Header height={{ base: 50, md: 70 }} p="md">
-          <div
-            style={{ display: 'flex', alignItems: 'center', height: '100%' }}
-          >
-            <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
-              <Burger
-                opened={opened}
-                onClick={() => setOpened((o) => !o)}
-                size="sm"
-                color={theme.colors.gray[6]}
-                mr="xl"
-              />
-            </MediaQuery>
-
-            <div>Application header</div>
-          </div>
-        </Header>
+        <AppHeader isOpen={opened} onclick={() => setOpened((o) => !o)} />
       }
     >
       <Grid>
