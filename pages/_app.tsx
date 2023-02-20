@@ -5,23 +5,20 @@ import {
   ColorSchemeProvider,
   MantineProvider,
 } from '@mantine/core'
-import { useColorScheme, useHotkeys } from '@mantine/hooks'
+import { useColorScheme, useHotkeys, useLocalStorage } from '@mantine/hooks'
 import { Provider } from 'jotai'
-import { useState } from 'react'
-import { atomWithStorage } from 'jotai/utils'
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props
 
   const preferredColorScheme = useColorScheme()
 
-  const themeAtom = atomWithStorage<ColorScheme>(
-    'themeAtom',
-    preferredColorScheme,
-  )
+  const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
+    key: 'mantine-color-scheme',
+    defaultValue: preferredColorScheme,
+    getInitialValueInEffect: true,
+  })
 
-  const [colorScheme, setColorScheme] =
-    useState<ColorScheme>(preferredColorScheme)
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'))
 
