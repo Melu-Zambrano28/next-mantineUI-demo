@@ -7,20 +7,23 @@ import {
 } from '@mantine/core'
 import { useColorScheme, useHotkeys, useLocalStorage } from '@mantine/hooks'
 import { Provider } from 'jotai'
+import { getCookie, setCookie } from 'cookies-next'
+import { useState } from 'react'
+import { GetServerSidePropsContext } from 'next'
 
-export default function App(props: AppProps) {
+export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props
 
-  const preferredColorScheme = useColorScheme()
+  const [colorScheme, setColorScheme] = useState<ColorScheme>(props.colorScheme)
 
-  const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
-    key: 'mantine-color-scheme',
-    defaultValue: preferredColorScheme,
-    getInitialValueInEffect: true,
-  })
+  const toggleColorScheme = (value?: ColorScheme) => {
+    const nextColorScheme = value || (colorScheme === 'dark' ? 'light' : 'dark')
+    setColorScheme(nextColorScheme)
 
-  const toggleColorScheme = (value?: ColorScheme) =>
-    setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'))
+    setCookie('mantine-color-scheme', nextColorScheme, {
+      maxAge: 60 * 60 * 24 * 30,
+    })
+  }
 
   useHotkeys([['mod+J', () => toggleColorScheme()]])
 
@@ -51,3 +54,7 @@ export default function App(props: AppProps) {
     </>
   )
 }
+
+App.getInitialProps = ({ ctx }: { ctx: GetServerSidePropsContext }) => ({
+  colorScheme: getCookie('mantine-color-scheme', ctx) || 'light',
+})
