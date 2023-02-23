@@ -29,15 +29,14 @@ const LinksGroup: React.FC<LinksGroupProps> = ({
   const router = useRouter()
 
   const items = (hasLinks ? links : []).map((link) => (
-    <Link href={link.link} key={`LinksGroup${link.label}`}>
-      <a
-        className={cx(classes.link, {
-          [classes.linkActive]: router.pathname === link.link,
-        })}
-        key={`LinksGroupPropsElemntA${link.label}`}
-      >
-        {link.label}
-      </a>
+    <Link
+      href={link.link}
+      key={`LinksGroup${link.label}`}
+      className={cx(classes.link, {
+        [classes.linkActive]: router.pathname === link.link,
+      })}
+    >
+      {link.label}
     </Link>
   ))
 

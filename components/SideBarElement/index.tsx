@@ -22,17 +22,16 @@ const SideBarElement: React.FC<SideBarElementProp> = ({
   const router = useRouter()
 
   return (
-    <Link href={link} key={`sideBarElementLink${keyElement}`}>
-      <a
-        className={cx(classes.link, {
-          [classes.linkActive]: router.pathname === link,
-        })}
-        key={`sideBarElementa${keyElement}`}
-        onClick={onclick}
-      >
-        {Icon && <Icon className={classes.linkIcon} />}
-        <span>{label}</span>
-      </a>
+    <Link
+      href={link}
+      key={`sideBarElementLink${keyElement}`}
+      className={cx(classes.link, {
+        [classes.linkActive]: router.pathname === link,
+      })}
+      onClick={onclick}
+    >
+      {Icon && <Icon className={classes.linkIcon} />}
+      <span>{label}</span>
     </Link>
   )
 }
